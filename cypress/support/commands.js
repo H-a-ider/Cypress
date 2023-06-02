@@ -33,3 +33,25 @@ Cypress.Commands.add('getIframe', (iframe)=>{
     .should('be.visible')
     .then(cy.wrap)
 })
+
+// Custom command for clicking on link using label
+
+Cypress.Commands.add('clickLink', (label)=>{
+    cy.get('a').contains(label).click()
+})
+
+// Over write contains()
+
+// Cypress.Commands.overwriteQuery('contains', (originalFn, subject, filter, text, options = {}) => {
+//     options.matchCase = false;
+//     return originalFn(subject, filter, text, options);
+//   });
+  
+
+// Custom command for login
+
+Cypress.Commands.add("loginapp", (email,password)=>{
+    cy.get('#Email').type(email)
+    cy.get('#Password').type(password)
+    cy.get("button[class='button-1 login-button']").click()
+})
