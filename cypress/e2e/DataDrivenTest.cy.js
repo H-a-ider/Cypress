@@ -19,6 +19,7 @@ describe('MyTestSuit', () => {
                     cy.get(".oxd-userdropdown-img").click()
                     cy.get(':nth-child(4) > .oxd-userdropdown-link').click()
                 }
+                
                 else {
                     cy.get(".oxd-text.oxd-text--p.oxd-alert-content-text").should("have.text", userData.expected)
                 }

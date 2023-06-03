@@ -24,11 +24,11 @@ describe('Handle Tables', ()=>{
         cy.get("table[class='table table-bordered table-hover'] > tbody > tr:nth-child(5) >td:nth-child(3)").contains("rs@yopmail.com")
     })
 
-    it.only("Read all the Rows and Columns data in the first page",()=>{
+    it("Read all the Rows and Columns data in the first page",()=>{
 
         // $rows representing all the rows and index is representing the index of every row like 1, 2 and 3 so on and $row is showing the actual specific row
-        cy.get("table[class='table table-bordered table-hover'] > tbody > tr").each(($row, index, $rows)=>{
-            cy.wrap($row).within(()=>{
+        cy.get("table[class='table table-bordered table-hover'] > tbody > tr").each(($currentRow, index, $rows)=>{
+            cy.wrap($currentRow).within(()=>{
 
                 // td is just a locator 
                 // Currently the $col is the first column
@@ -40,17 +40,17 @@ describe('Handle Tables', ()=>{
         })
     })
 
-    it("Pagination", ()=>{
+    it.only("Pagination", ()=>{
 
-       // find total number of Pages
-        // let totalPages
-        // cy.get(".col-sm-6.text-end").then((e)=>{
-        //     let mytext = e.text() // Showing 1 to 10 of 5581 (559 Pages)
-        //     totalPages = mytext.substring( mytext.indexOf("(")+1, mytext.indexOf("Pages")-1)
-        //     cy.log("Total number of pages in a table ======> " + totalPages)
-        // })
+    //    find total number of Pages
+        let totalPages
+        cy.get(".col-sm-6.text-end").then((e)=>{
+            let mytext = e.text() // Showing 1 to 10 of 5581 (559 Pages)
+            totalPages = mytext.substring( mytext.indexOf("(")+1, mytext.indexOf("Pages")-1)
+            cy.log("Total number of pages in a table ======> " + totalPages)
+        })
 
-        let totalPages = 5
+        // let totalPages = 5
         for(let p=1; p <=totalPages;p++){
             if(totalPages>1){
                 cy.log("Active page is ===== " + p)
