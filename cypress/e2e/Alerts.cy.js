@@ -1,5 +1,6 @@
 describe("Alerts", ()=>{
 
+
     // (1) Javascript Alert: It will have some text and an "OK" button
     it("Js Alert", ()=>{
         cy.visit('http://the-internet.herokuapp.com/javascript_alerts')
@@ -11,6 +12,9 @@ describe("Alerts", ()=>{
         })
 
         cy.get("#result").should('have.text', "You successfully clicked an alert")
+
+    cy.wait(3000)
+
     })
 
 
@@ -25,7 +29,12 @@ describe("Alerts", ()=>{
 
         // cypress automatically closed alert window by using ok button-default
         cy.get("#result").should('have.text', "You clicked: Ok")
+
+    cy.wait(3000)
+
     })
+
+
 
     // (2) Javascript Confirm Alert: It will have some text with "Ok" and "Cancel" buttons
     it("Js Confirm Alert -Cancel", ()=>{
@@ -40,8 +49,12 @@ describe("Alerts", ()=>{
         cy.on('window:confirm', ()=> false) // Cypress closes alert window using cancel button 
         cy.get("#result").should('have.text', "You clicked: Cancel")
 
+    cy.wait(3000)
+
 
     })
+
+
 
     // (3) Javascript Prompt Alert: It will have some text with text box for user input 
     // along with "Ok" and "Cancel" buttons
@@ -57,8 +70,10 @@ describe("Alerts", ()=>{
   
         cy.get("#result").should('have.text', "You entered: welcome")
 
+    cy.wait(3000)
 
     })
+
 
 
     // (4) Authentication Alert

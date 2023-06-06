@@ -1,3 +1,8 @@
+import { slowCypressDown } from 'cypress-slow-down'
+// slow down each command by the default amount
+// which is 1 second
+slowCypressDown()
+
 describe("Check UI Elements", ()=>{
     // it("Check Radio Buttons", ()=>{
 
@@ -21,21 +26,21 @@ describe("Check UI Elements", ()=>{
         cy.visit("https://itera-qa.azurewebsites.net/home/automation")
         
         // Visibility of element
-        // cy.get("input#monday").should("be.visible")
+        cy.get("input#monday").should("be.visible")
 
         // Selecting single check box
-        // cy.get("input#monday ").check().should("be.checked")
+        cy.get("input#monday ").check().should("be.checked")
 
-        //Unselecting check box
-        // cy.get("input#monday").uncheck().should("not.be.checked")
+        // Unselecting check box
+        cy.get("input#monday").uncheck().should("not.be.checked")
         
         // Slecting all the check boxes
-        // cy.get("input.form-check-input[type='checkbox']").check().should("be.checked")
-        // cy.get("input.form-check-input[type='checkbox']").uncheck().should("not.be.checked")
+        cy.get("input.form-check-input[type='checkbox']").check().should("be.checked")
+        cy.get("input.form-check-input[type='checkbox']").uncheck().should("not.be.checked")
 
         // // Select First Checkbox
-        // cy.get("input.form-check-input[type='checkbox']").first().check().should("be.checked")
-        // cy.get("input.form-check-input[type='checkbox']").last().check().should("be.checked")
+        cy.get("input.form-check-input[type='checkbox']").first().check().should("be.checked")
+        cy.get("input.form-check-input[type='checkbox']").last().check().should("be.checked")
 
 
     })

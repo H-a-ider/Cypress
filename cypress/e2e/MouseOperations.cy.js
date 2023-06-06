@@ -1,3 +1,9 @@
+import { slowCypressDown } from 'cypress-slow-down'
+// slow down each command by the default amount
+// which is 1 second
+slowCypressDown()
+
+
 import 'cypress-iframe'
 require ('@4tw/cypress-drag-drop')
 describe("Mouse Operations", ()=>{
@@ -12,12 +18,12 @@ describe("Mouse Operations", ()=>{
         cy.get("body > main:nth-child(3) > div:nth-child(1) > nav:nth-child(1) > div:nth-child(3) > ul:nth-child(1) > li:nth-child(1) > div:nth-child(2) > div:nth-child(1) ul:nth-child(1) > li:nth-child(2) > a:nth-child(1)").should('be.visible')
     })
 
-    it('Right Click', ()=>{image.png
+    it('Right Click', ()=>{
         cy.visit("https://swisnl.github.io/jQuery-contextMenu/demo.html")
 
         // Approach 1
-        cy.get(".context-menu-one.btn.btn-neutral").trigger('contextmenu')
-        cy.get(".context-menu-icon-copy > span").should('be.visible')
+        // cy.get(".context-menu-one.btn.btn-neutral").trigger('contextmenu')
+        // cy.get(".context-menu-icon-copy > span").should('be.visible')
 
         // Approach 2
         cy.get(".context-menu-one.btn.btn-neutral").rightclick()
@@ -28,9 +34,9 @@ describe("Mouse Operations", ()=>{
         cy.visit("https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_ondblclick3")
         cy.frameLoaded("#iframeResult") // Load the frame
 
-        // Approach 1 by trigger method
-        cy.iframe('#iframeResult').find("button[ondblclick='myFunction()']").trigger('dblclick')
-        cy.iframe('#iframeResult').find("#field2").should('have.value', 'Hello World!')
+        // // Approach 1 by trigger method
+        // cy.iframe('#iframeResult').find("button[ondblclick='myFunction()']").trigger('dblclick')
+        // cy.iframe('#iframeResult').find("#field2").should('have.value', 'Hello World!')
 
         // Approach 2 Using dbl click 
         cy.iframe('#iframeResult').find("button[ondblclick='myFunction()']").dblclick()
@@ -47,7 +53,7 @@ describe("Mouse Operations", ()=>{
         
     })
 
-    it.only("Scrolling Page", ()=>{
+    it("Scrolling Page", ()=>{
         cy.visit("https://countries-ofthe-world.com/flags-of-the-world.html")
         
         // Pakistan Flag

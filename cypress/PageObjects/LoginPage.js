@@ -1,4 +1,5 @@
 class Login{
+    
     setUserName(username)
     {
         cy.get("input[placeholder='Username']").type(username)

@@ -1,9 +1,15 @@
+import { slowCypressDown } from 'cypress-slow-down'
+// slow down each command by the default amount
+// which is 1 second
+slowCypressDown()
+
+
 import Login from "../PageObjects/LoginPage2.js"
 
 describe('pom', ()=>{
 
     // General Approach
-    it("LoginTest", ()=>{
+    it.only("LoginTest", ()=>{
         cy.visit("https://opensource-demo.orangehrmlive.com/")
 
         cy.get("input[placeholder='Username']").type("Admin")
@@ -14,11 +20,12 @@ describe('pom', ()=>{
 
     })
 
-    // Using page import model
+    // Using page Object model
     it("LoginTest", ()=>{
         cy.visit("https://opensource-demo.orangehrmlive.com/")
 
         const ln = new Login()
+        
         ln.setUserName("Admin")
         ln.setPassword("admin123")
         ln.clickSubmit()
@@ -26,8 +33,8 @@ describe('pom', ()=>{
 
     })
 
-    // Using page import model with fixture
-    it.only("LoginTest", ()=>{
+    // Using page Object model with fixture
+    it("LoginTest", ()=>{
         cy.visit("https://opensource-demo.orangehrmlive.com/")
 
 

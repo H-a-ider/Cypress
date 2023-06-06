@@ -1,3 +1,9 @@
+import { slowCypressDown } from 'cypress-slow-down'
+// slow down each command by the default amount
+// which is 1 second
+slowCypressDown()
+
+
 import 'cypress-iframe'
 describe("Handling Frames", ()=>{
     

@@ -1,6 +1,6 @@
 describe('Handle Tabs', ()=>{
     
-    it.skip('Approach 1', ()=>{
+    it('Approach 1', ()=>{
         
         cy.visit("https://the-internet.herokuapp.com/windows")
 
@@ -13,7 +13,7 @@ describe('Handle Tabs', ()=>{
         cy.go('back') // Go back to Parent Tab
     })
     
-    it('Approach 2', ()=>{
+    it.skip('Approach 2', ()=>{
         cy.visit("https://the-internet.herokuapp.com/windows")
         
         cy.get(".example > a").then((e)=>{ 

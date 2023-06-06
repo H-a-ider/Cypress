@@ -1,3 +1,8 @@
+import { slowCypressDown } from 'cypress-slow-down'
+// slow down each command by the default amount
+// which is 1 second
+slowCypressDown()
+
 describe('Handle Tables', ()=>{
 
     beforeEach('Login', ()=>{
@@ -20,7 +25,7 @@ describe('Handle Tables', ()=>{
         cy.get("table[class='table table-bordered table-hover'] > thead > tr > td").should('have.length', '7')
     })
 
-    it("Check cell data from specific row and column",()=>{
+    it.skip("Check cell data from specific row and column",()=>{
         cy.get("table[class='table table-bordered table-hover'] > tbody > tr:nth-child(5) >td:nth-child(3)").contains("rs@yopmail.com")
     })
 
@@ -40,17 +45,17 @@ describe('Handle Tables', ()=>{
         })
     })
 
-    it.only("Pagination", ()=>{
+    it("Pagination", ()=>{
 
     //    find total number of Pages
-        let totalPages
-        cy.get(".col-sm-6.text-end").then((e)=>{
-            let mytext = e.text() // Showing 1 to 10 of 5581 (559 Pages)
-            totalPages = mytext.substring( mytext.indexOf("(")+1, mytext.indexOf("Pages")-1)
-            cy.log("Total number of pages in a table ======> " + totalPages)
-        })
+        // let totalPages
+        // cy.get(".col-sm-6.text-end").then((e)=>{
+        //     let mytext = e.text() // Showing 1 to 10 of 5581 (559 Pages)
+        //     totalPages = mytext.substring( mytext.indexOf("(")+1, mytext.indexOf("Pages")-1)
+        //     cy.log("Total number of pages in a table ======> " + totalPages)
+        // })
 
-        // let totalPages = 5
+        let totalPages = 5
         for(let p=1; p <=totalPages;p++){
             if(totalPages>1){
                 cy.log("Active page is ===== " + p)

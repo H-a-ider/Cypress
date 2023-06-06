@@ -42,10 +42,10 @@ Cypress.Commands.add('clickLink', (label)=>{
 
 // Over write contains()
 
-Cypress.Commands.overwriteQuery('contains', (originalFn, subject, filter, text, options = {}) => {
-    options.matchCase = false;
-    return originalFn(subject, filter, text, options);
-  });
+// Cypress.Commands.overwriteQuery('contains', (originalFn, subject, filter, text, options = {}) => {
+//     options.matchCase = false;
+//     return originalFn(subject, filter, text, options);
+//   });
   
 
 // Custom command for login

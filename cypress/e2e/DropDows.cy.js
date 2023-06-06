@@ -1,10 +1,16 @@
+import { slowCypressDown } from 'cypress-slow-down'
+// slow down each command by the default amount
+// which is 1 second
+slowCypressDown()
+
+
 describe("Handel Drop Downs", ()=>{
     it("Dropdown with select", ()=>{
         cy.visit("https://www.zoho.com/commerce/free-demo.html")
         cy.get("#zcf_address_country").select("Italy").should("have.value", "Italy")
     })
  
-    it.only("Dropdown without select", ()=>{
+    it("Dropdown without select", ()=>{
         cy.visit("https://www.dummyticket.com/dummy-ticket-for-visa-application/")
         cy.get("#select2-billing_country-container").click() 
         cy.get(".select2-search__field").type("Italy").type("{enter}")
